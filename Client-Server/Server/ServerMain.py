@@ -12,7 +12,7 @@ server.bind(("localhost",9999))
 server.listen()
 
 
-
+# Giving Options to Client, after sign-up or sign-in client goes to board
 def handle_connection(client):
     # Asking option to client
     checker = False
@@ -30,7 +30,7 @@ def handle_connection(client):
     servfun.board(client)
    
 
-
+# Main Loop: Accept Connection with Clients and start a new Thread for each Connection
 while(True):
     client,addr = server.accept()
     threading.Thread(target=handle_connection,args=(client,)).start()
