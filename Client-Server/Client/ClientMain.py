@@ -21,13 +21,14 @@ def main():
         match option:
             case '1':
                 clfun.sign_up(server)
-                break
             case '2':
                 clfun.sign_in(server)
                 break
             case _:
                 print("PLEASE SELECT A VALID OPTION")
     
-    
+    clfun.disconnect_to_server(server)
+
+
 if __name__ == "__main__":
     main()

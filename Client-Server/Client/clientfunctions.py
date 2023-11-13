@@ -1,6 +1,11 @@
 import socket
 import CODES
 
+# Shutdown and close the socket
+def disconnect_to_server(server):
+    server.shutdown(socket.SHUT_RDWR)
+    server.close()
+
 def conn_to_server(hostname,port):
     server = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
     server.connect((hostname,port))
