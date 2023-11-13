@@ -7,4 +7,4 @@ response = requests.get(url)
 soup = BeautifulSoup(response.text,'html.parser')
 
 res = soup.find('div', attrs={'class': 'small-widget download-widget'})
-print(res)
+print(res) 
