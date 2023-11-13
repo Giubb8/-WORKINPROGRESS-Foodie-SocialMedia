@@ -14,7 +14,9 @@ def conn_to_server(hostname,port):
 def sign_in(server):
     print('sign-in')
     checker=False
+    
     while(checker != True):
+        
         # Receiving Instructions from Server and sending Sign-Up Parameters to Server
         message = server.recv(1024).decode() # comm_7
         print(message)
@@ -30,14 +32,12 @@ def sign_in(server):
         opcode = server.recv(1024).decode() # comm_11
         print(opcode)
         
-        match opcode:
-            case CODES.OPSUCCESS:    
-                print("SIGN UP SUCCESSFUL")
-                checker = True
-            case CODES.INVALIDOPTION:
-                print("INVALID USERNAME/PASSWORD")
-            case CODES.ALREADYEXISTS:
-                print("USERNAME ALREADY EXISTS")
+        CODES.opcode_check(opcode,checker)
+        print(opcode,checker)
+        if(opcode==CODES.OPCODE.OPSUCCESS):
+            print('Login Successful')
+        else:
+            print('Login Failed')
 
 def sign_up(server):
     print('signup')
@@ -58,12 +58,8 @@ def sign_up(server):
         opcode = server.recv(1024).decode() # comm_6 
         print(opcode)
         
-        match opcode:
-            case CODES.OPSUCCESS:    
-                print("SIGN UP SUCCESSFUL")
-                checker = True
-            case CODES.INVALIDOPTION:
-                print("INVALID USERNAME/PASSWORD")
-            case CODES.ALREADYEXISTS:
-                print("USERNAME ALREADY EXISTS")
+        CODES.opcode_check(opcode,checker)
             
+            
+def board(server):
+    pass
