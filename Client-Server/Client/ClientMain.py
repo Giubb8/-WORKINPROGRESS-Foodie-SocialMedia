@@ -1,7 +1,7 @@
 import socket
 import clientfunctions as clfun
 import sys
-sys.stdin = open('input.txt', 'r')
+#sys.stdin = open('input.txt', 'r')
 
 # TODO define in txt file
 hostname = 'localhost'
