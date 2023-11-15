@@ -60,6 +60,23 @@ def sign_up(server):
         
         CODES.opcode_check(opcode,checker)
             
-            
-def board(server):
+        
+    
+def check_friends_requests(server):
+    # Ask server the friends request list
+    # Select with cli the friend
+    # Accept or Deny
     pass
+
+def check_friends_list(server):
+    pass
+
+
+def board(server):
+    print("WELCOME TO THE FOODIE BOARD\nPLEASE SELECT AN OPTION:")
+    while(True):
+        print("1)CHECK FRIENDS REQUEST\n2)FRIENDS LIST\n3)SEND FRIEND REQUEST\n4)SCAN FOOD\n5)CHECK HISTORY\n6)SEND NOTIFICATION\n7)CLOSE")
+        choice = input()
+        match choice:
+            case '1':
+                break

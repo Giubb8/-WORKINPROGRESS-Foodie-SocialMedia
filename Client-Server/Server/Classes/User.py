@@ -5,6 +5,7 @@ class User(object):
     def __init__(self, username):
         self.username = username
         self.friends = []
+        self.request = []
 
     def add_friend(self, friend):
         self.friends.append(friend)
@@ -13,7 +14,8 @@ class User(object):
         return [friend.username for friend in self.friends]
 
     def __str__(self):
-        return f"User: {self.username}, Friends: {self.friends}"
+        return f"User: {self.username}, Friends: {self.friends}"        
+            
     
     def toJSON(self):
         return json.dumps(self, default=lambda o: o.__dict__, 
