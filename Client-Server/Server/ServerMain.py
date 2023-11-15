@@ -21,7 +21,7 @@ def handle_connection(client):
     checker = False
     username=''
     while(checker != True):
-        client.send("SELECT AN OPTION:\n1) SIGN UP\n2) SIGN IN".encode()) # comm_0
+        client.send("SELECT AN OPTION:\n1) SIGN UP\n2) SIGN IN\n3) EXIT".encode()) # comm_0
         option = client.recv(1024).decode() # comm_1
         print(option)
         match option:

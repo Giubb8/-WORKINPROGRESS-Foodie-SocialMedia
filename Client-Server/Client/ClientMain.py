@@ -24,6 +24,8 @@ def main():
             case '2':
                 clfun.sign_in(server)
                 break
+            case '3':
+                clfun.disconnect_to_server(server)
             case _:
                 print("PLEASE SELECT A VALID OPTION")
     clfun.board(server)
