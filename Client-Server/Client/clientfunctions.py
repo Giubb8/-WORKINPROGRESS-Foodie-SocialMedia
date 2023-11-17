@@ -36,8 +36,12 @@ def sign_in(server):
         print(opcode,checker)
         if(opcode==CODES.OPCODE.OPSUCCESS):
             print('Login Successful')
+            checker = False
         else:
             print('Login Failed')
+            
+        print("uscito1")
+        return
 
 def sign_up(server):
     print('signup')
@@ -64,19 +68,51 @@ def sign_up(server):
     
 def check_friends_requests(server):
     # Ask server the friends request list
+    requests = server.recv(1024).decode()
+    
+    for count,value in enumerate(requests):
+        print(f"{count}) {value}") 
     # Select with cli the friend
+    choice = input("Select the Request")
+    while(True):
+        acc_or_deny = input('1 = Accept | 0 = Deny')
+        match acc_or_deny:
+            case '1':
+                print("You accepted the request")
+                # inviare al server risposta
+                break
+            case '0':
+                print("You denied the request")
+                #inviare al server risposta
+                break
+            case _:
+                print("Enter a valid option")                
+    
     # Accept or Deny
     pass
 
 def check_friends_list(server):
     pass
 
-
+def send_friend_request(server):
+    
+    while(True):
+        friend_username = input("type the username")
+        server.send(friend_username).encode()
+        opcode = server.recv(1024).decode()
+        if(opcode == CODES.OPCODE.OPSUCCESS):
+            break
+        
+ 
 def board(server):
     print("WELCOME TO THE FOODIE BOARD\nPLEASE SELECT AN OPTION:")
     while(True):
         print("1)CHECK FRIENDS REQUEST\n2)FRIENDS LIST\n3)SEND FRIEND REQUEST\n4)SCAN FOOD\n5)CHECK HISTORY\n6)SEND NOTIFICATION\n7)CLOSE")
         choice = input()
+        server.send(choice.encode()) # comm_12
         match choice:
             case '1':
-                break
+                check_friends_requests(server)
+            case '3':
+                send_friend_request(server)
+                

@@ -1,11 +1,13 @@
 import hashlib
 import json
 import sys
+
 sys.path.insert(0, '/home/giubb8/Scrivania/PythonProject_1/Classes')
 import utility as util
 import sqlite3
 import CODES
 
+from Classes.User import User
 
 
     
@@ -67,7 +69,51 @@ def sign_up(client):
     # TODO CREARE USER E AGGIUNGERE A DIZIONARIO UTENTI
         
     
+def s_check_friends_requests(server,user:User):
+    # Ask server the friends request list
+    data = str(user.get_friends())  
+    
+    server.send(data.encode()) # comm_13
+    
+    # Select with cli the friend
+    # Accept or Deny
+    pass
         
-def board(client,username):
-        print(f"THIS IS THE BOARD of {username} ")
+def s_send_friend_request(client,user:User,users_state:dict):
+    while(True):
+        friend_name = client.recv(1024).decode()
+        if(users_state.keys(friend_name)):
+            users_state[friend_name].add_request(user.get_username())
+            client.send(CODES.OPSUCCESS).encode()
+            break
+        elif(user.get_requests().count(friend_name) > 0):
+            user.add_friend(friend_name)
+            users_state[friend_name].add_friend(user.get_username())
+        else:
+            client.send(CODES.OPFAILURE).encode()
+
+def s_remove_friend(client,user:User,users_state:dict):
+    while(True):
+        friend_name = client.recv(1024).decode()
+        user_friends_list = user.get_friends
+        if(friend_name in user_friends_list):
+            user_friends_list.remove(friend_name)
+            users_state[friend_name].get_friends.remove(user.get_username())
+            client.send(CODES.OPSUCCESS).encode()
+            break
+        else:
+            client.send(CODES.OPFAILURE).encode()
+    
+def board(client,user:User,users_state:dict):
+        print(user)
+        
+        print(f"THIS IS THE BOARD of {user.get_username()} ")
+        while(True):
+            option = client.recv(1024).decode() # comm_12
+            match option:
+                case '1':
+                    s_check_friends_requests(client,user)
+                    pass
+                case '3':
+                    s_send_friend_request(client,user,users_state)
         

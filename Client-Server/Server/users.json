@@ -1,1 +1,1 @@
-"{\"TEST\": {\"py/object\": \"Classes.User.User\", \"username\": \"test\", \"friends\": []}, \"grandetestt\": {\"py/object\": \"Classes.User.User\", \"username\": \"grandetestt\", \"friends\": []}}"
+"{\"TEST\": {\"py/object\": \"Classes.User.User\", \"username\": \"test\", \"friends\": []}, \"grandetestt\": {\"py/object\": \"Classes.User.User\", \"username\": \"grandetestt\", \"friends\": []}, \"tester\": {\"py/object\": \"Classes.User.User\", \"username\": \"tester\", \"friends\": [], \"request\": []}}"

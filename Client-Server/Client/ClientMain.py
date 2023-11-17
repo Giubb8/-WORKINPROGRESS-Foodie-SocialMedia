@@ -1,7 +1,7 @@
 import socket
 import clientfunctions as clfun
 import sys
-#sys.stdin = open('input.txt', 'r')
+sys.stdin = open('./Test/input.txt', 'r')
 
 # TODO define in txt file
 hostname = 'localhost'
@@ -12,8 +12,9 @@ def main():
     # Connecting to Server # TODO CHECK IF EVERYTHING ALL RIGHT EXCEPTIONS
     server = clfun.conn_to_server(hostname,port)
     print("WELCOME TO FOODIE")
-    
-    while(True): 
+    checker = True
+    while(checker): 
+        print('ciao')
         message = server.recv(1024).decode() # comm_0
         print(message)
         option = input("Option: \n")
@@ -23,11 +24,17 @@ def main():
                 clfun.sign_up(server)
             case '2':
                 clfun.sign_in(server)
+                print(checker)
+                checker = False
+                print(checker)
+                
                 break
             case '3':
                 clfun.disconnect_to_server(server)
             case _:
                 print("PLEASE SELECT A VALID OPTION")
+                
+    print("USCITO")
     clfun.board(server)
     clfun.disconnect_to_server(server)
 

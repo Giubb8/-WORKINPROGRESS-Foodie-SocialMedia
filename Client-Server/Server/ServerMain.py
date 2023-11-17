@@ -30,9 +30,9 @@ def handle_connection(client):
                 process = Process(target=util.add_user_to_dict,args=(users_state,username))
                 process.start()
             case '2':
-                (checker,username) = servfun.sign_in(client,users_state)
+                (checker,username) = servfun.sign_in(client)
     
-    servfun.board(client,username)
+    servfun.board(client,users_state[username],users_state)
 
 def main():
     
