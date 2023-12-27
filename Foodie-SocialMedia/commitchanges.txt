@@ -1,2 +1,0 @@
-created a function for disconnect from server
-created a function for operation code
