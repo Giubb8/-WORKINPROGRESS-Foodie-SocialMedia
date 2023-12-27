@@ -54,12 +54,12 @@ def resume_state(users_state):
     #    jsonstring = jsonpickle.encode(users_state)
     #    json.dump(jsonstring,f)
     #users_state={}
-    print(users_state)
+    #print(users_state)
     with open('./users.json','r') as f:
         jsonstring2 = json.load(f)
-        print(jsonstring2)
+        #print(jsonstring2)
         users_state=jsonpickle.decode(jsonstring2)
-        print(users_state)
+        #print(users_state)
         return users_state
             
     
